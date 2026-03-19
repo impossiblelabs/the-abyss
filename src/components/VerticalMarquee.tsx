@@ -2,10 +2,12 @@ import { useMemo } from "react";
 
 const ALL_CARDS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-function shuffle<T>(arr: T[]): T[] {
+function shuffle<T>(arr: T[], seed: number): T[] {
   const a = [...arr];
+  let s = seed;
   for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    s = (s * 16807 + 0) % 2147483647;
+    const j = s % (i + 1);
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
@@ -14,21 +16,33 @@ function shuffle<T>(arr: T[]): T[] {
 interface VerticalMarqueeProps {
   speed: number;
   direction: "up" | "down";
+  seed?: number;
 }
 
-const VerticalMarquee = ({ speed, direction }: VerticalMarqueeProps) => {
+const VerticalMarquee = ({
+  speed,
+  direction,
+  seed = 1,
+}: VerticalMarqueeProps) => {
   const images = useMemo(() => {
-    const shuffled = shuffle(ALL_CARDS);
+    const shuffled = shuffle(ALL_CARDS, seed);
     return [...shuffled, ...shuffled, ...shuffled];
-  }, []);
+  }, [seed]);
 
-  const anim = direction === "up" ? "marqueeUp" : "marqueeDown";
+  const className =
+    direction === "up" ? "marquee-track-up" : "marquee-track-down";
 
   return (
     <div style={{ overflow: "hidden", height: "100%" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: 12, animation: `${anim} ${speed}s linear infinite` }}>
+      <div className={className} style={{ animationDuration: `${speed}s` }}>
         {images.map((n, i) => (
-          <img key={i} src={`/images/card${n}.png`} style={{ borderRadius: 16, display: "block", width: "100%" }} />
+          <img
+            key={i}
+            src={`/images/card${n}.png`}
+            alt=""
+            loading="eager"
+            className="marquee-card"
+          />
         ))}
       </div>
     </div>

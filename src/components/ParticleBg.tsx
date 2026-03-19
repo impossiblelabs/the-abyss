@@ -7,12 +7,11 @@ const ParticleBg = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d")!;
-    const dpr = window.devicePixelRatio || 1;
-
     const resize = () => {
+      const dpr = window.devicePixelRatio || 1;
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       draw();
     };
 
@@ -31,9 +30,45 @@ const ParticleBg = () => {
       const rng = seed(12345);
 
       const layers = [
-        { count: 5000, alphaBase: 0.08, alphaRange: 0.35, rBase: 0.3, rRange: 0.9, hueBase: 20, hueRange: 25, satBase: 75, satRange: 25, litBase: 35, litRange: 30 },
-        { count: 2000, alphaBase: 0.1, alphaRange: 0.4, rBase: 0.6, rRange: 2, hueBase: 18, hueRange: 28, satBase: 80, satRange: 20, litBase: 40, litRange: 25 },
-        { count: 400, alphaBase: 0.15, alphaRange: 0.5, rBase: 1.2, rRange: 2.5, hueBase: 25, hueRange: 18, satBase: 85, satRange: 15, litBase: 50, litRange: 25 },
+        {
+          count: 5000,
+          alphaBase: 0.08,
+          alphaRange: 0.35,
+          rBase: 0.3,
+          rRange: 0.9,
+          hueBase: 20,
+          hueRange: 25,
+          satBase: 75,
+          satRange: 25,
+          litBase: 35,
+          litRange: 30,
+        },
+        {
+          count: 2000,
+          alphaBase: 0.1,
+          alphaRange: 0.4,
+          rBase: 0.6,
+          rRange: 2,
+          hueBase: 18,
+          hueRange: 28,
+          satBase: 80,
+          satRange: 20,
+          litBase: 40,
+          litRange: 25,
+        },
+        {
+          count: 400,
+          alphaBase: 0.15,
+          alphaRange: 0.5,
+          rBase: 1.2,
+          rRange: 2.5,
+          hueBase: 25,
+          hueRange: 18,
+          satBase: 85,
+          satRange: 15,
+          litBase: 50,
+          litRange: 25,
+        },
       ];
 
       for (const l of layers) {

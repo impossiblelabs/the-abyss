@@ -4,7 +4,6 @@ import VerticalMarquee from "./components/VerticalMarquee";
 import HeroBadge from "./components/HeroBadge";
 import HeroCtas from "./components/HeroCtas";
 
-
 export default function FusionLanding() {
   const [visible, setVisible] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -38,12 +37,18 @@ export default function FusionLanding() {
 
       {/* HERO */}
       <div className="hero-wrapper">
-        <div className="hero-marquee" style={{ opacity: visible ? 1 : 0, transition: "opacity 1.2s ease 0.2s" }}>
+        <div
+          className="hero-marquee"
+          style={{
+            opacity: visible ? 1 : 0,
+            transition: "opacity 1.2s ease 0.2s",
+          }}
+        >
           <div className="marquee-col">
-            <VerticalMarquee speed={40} direction="up" />
+            <VerticalMarquee speed={40} direction="up" seed={1} />
           </div>
           <div className="marquee-col" style={{ marginTop: -48 }}>
-            <VerticalMarquee speed={44} direction="down" />
+            <VerticalMarquee speed={44} direction="down" seed={2} />
           </div>
         </div>
 
@@ -62,13 +67,27 @@ export default function FusionLanding() {
             <h1 className="hero-heading">The Abyss</h1>
           </div>
 
-          <p className="hero-sub">A game of action and strategy that will take you to the depths of the ocean.</p>
+          <p className="hero-sub">
+            A game of action and strategy that will take you to the depths of
+            the ocean.
+          </p>
 
-          <p className="hero-tagline">Learn the rules in a few minutes, play for hours.</p>
+          <p className="hero-tagline">
+            Learn the rules in a few minutes, play for hours.
+          </p>
           <HeroCtas />
         </div>
       </div>
-      <p className="site-footer">Made by <a href="https://impossiblelabs.xyz" target="_blank" rel="noopener noreferrer">Impossible Labs</a></p>
+      <p className="site-footer">
+        Made by{" "}
+        <a
+          href="https://impossiblelabs.xyz"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Impossible Labs
+        </a>
+      </p>
     </div>
   );
 }
