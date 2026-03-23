@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-const ALL_CARDS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const ALL_CARDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 function shuffle<T>(arr: T[], seed: number): T[] {
   const a = [...arr];
