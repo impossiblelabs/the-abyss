@@ -47,7 +47,7 @@ export default function FusionLanding() {
           <div className="marquee-col">
             <VerticalMarquee speed={40} direction="up" seed={1} />
           </div>
-          <div className="marquee-col" style={{ marginTop: -48 }}>
+          <div className="marquee-col" style={{ marginTop: -48, height: "calc(100% + 48px)" }}>
             <VerticalMarquee speed={44} direction="down" seed={2} />
           </div>
         </div>
@@ -77,17 +77,17 @@ export default function FusionLanding() {
           </p>
           <HeroCtas />
         </div>
+        <p className="site-footer">
+          Made by{" "}
+          <a
+            href="https://impossiblelabs.xyz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Impossible Labs
+          </a>
+        </p>
       </div>
-      <p className="site-footer">
-        Made by{" "}
-        <a
-          href="https://impossiblelabs.xyz"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Impossible Labs
-        </a>
-      </p>
     </div>
   );
 }
