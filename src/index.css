@@ -630,6 +630,35 @@ a {
   margin: 0 auto 16px;
 }
 
+/* ── Rulebook FAB ── */
+.fab-rulebook {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 30;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #c8880c 0%, #e0a028 50%, #c8880c 100%);
+  border: none;
+  color: #1a1008;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow:
+    0 4px 24px rgba(224, 160, 40, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.fab-rulebook:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 6px 32px rgba(224, 160, 40, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
 /* ── Footer ── */
 .site-footer {
   position: fixed;
