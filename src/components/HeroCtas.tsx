@@ -1,27 +1,11 @@
-import { useState, useEffect, useRef, type FormEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-
-const _XK = "theabyss2026";
-const _XT =
-  "EREvUQchMhp9WXh9Ilk0CC46ORtQd1FfOwEvMjcDOkJ8WXgPWg0cKwodJCJbf1t/RCEMFgsYHSFCeVhZHTEyOBU3CSJKal9zRiUhAhg0QTlZfVheHyUfKFAjNz4DaWZ3DDEyOFAjNCoDfWVkHyYILFc0GRtffkhdAzEIJBg2JClefkhkHzIPBQ80CRdeaVhjRjExBlA2NCYDanVzQCYfMw4gJD5KanV/HSQmKxIgKyJbf1hzRyYfLFc3JxBFflh3ASUPAlI3GToBfHF8ATEIOAs2GTYBfkh7QSYxAhU3GTJHfVhVRCYPKFc1MDleVXp3HScPMFc0GRgAfUh3RiYPIBc0GRBFfVh/QCQmKxgdJDpbf1t/DSUPKFA3GSJIeVtBHQtXLxQaNCVIeVhGFjA9UUw0RioHUlRnHzkBLzEmQkd5YloAHRAxFy5BGhZFVgNwECUBLz0WBkZoZXxSASQjCggMAilhSVUPHTwIACAuCQlKd3puIRkjGwg4FCVQB18HOAYDMjs+QzkKZ1dRMjApBVoyQRtTaAZ0IS01FSNLQCxLeFwFRDJcJSM3OCR+HWp6LjAqUxMsQzhIQGMPISoLOSoWKT58R14DIVsXECgoGCleQUdcKwsPEhoRQTVoZwUAORsOWQ4/IzRfW35lDio3AA8dCgJfZlxzLTtUOzEUGAV5BkpDOScrIi0yIQpQXFUPQwdRJjRINh9iRFBpGyMAJjQ/QTxCQkQOQiwIKi4+Shpcb1hjHDkRLC9JGRRFY1F9PS4PNFsQATx9UnQDEQ4LUlc8JABQaUJuPBkkBytORR1qZHZSFxwpLzU/OixICXlcKzhVOzYbBTtVYmF9DD0DWTgdNhFbZ2pSMVo8WAVPRipKdmdwEScyERVOPTRzRHRyMBI9BxEYFgVnfgVOBAQMVzYJGyJzd3NsOy4oUCUuPitdb395TAYvIAYXFyVgWFpyRhEpACcNKz1HcVZCDgMECSdBCUsFagpcHxA0JwovRRt1XFZpAx4xCAQyCQV6c0FaTCIcCScSPyNfRmJdBQApTBEvEkJFdAMPNT0WUVQBNRBdCWpMEwNTDA0hSjBjd0dgLD0fFRZIQApmcwR5ICMvBQEMEAR1Zl90FS4xCREKEBJKfFR9MQNQWC8VPCZfanVDQyNTVxUzMhJoVFdjDCkwVDY1S0FoQnRfRlo2Jw42RAFQfW1+EiUJGABPMRpwZAZ+RT4pMSE8FgpqSXRvGBlUJwESSjBkYnp/Ag8VFBtBITJlenZGECs1BQoDHgQCX2N8TFAnFg1MODZfR1ACAAdcClEsQEQERFpiLF8IMA==";
-
-function _d(encoded: string, key: string): string {
-  const bytes = Uint8Array.from(atob(encoded), (c) => c.charCodeAt(0));
-  return Array.from(bytes, (b, i) =>
-    String.fromCharCode(b ^ key.charCodeAt(i % key.length)),
-  ).join("");
-}
-
-const MAILERLITE_API_KEY = _d(_XT, _XK);
-const MAILERLITE_GROUP_ID = "182403056108832766";
-
-type EmailState = "idle" | "submitting" | "success" | "error";
+import { useForm } from "@formspree/react";
 
 const HeroCtas = () => {
   const [videoOpen, setVideoOpen] = useState(false);
   const [emailOpen, setEmailOpen] = useState(false);
-  const [emailState, setEmailState] = useState<EmailState>("idle");
-  const [email, setEmail] = useState("");
+  const [formState, handleSubmit, resetForm] = useForm("xkoyzvrr");
   const videoRef = useRef<HTMLVideoElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -50,36 +34,16 @@ const HeroCtas = () => {
     if (emailOpen) inputRef.current?.focus();
   }, [emailOpen]);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!email || emailState === "submitting") return;
-
-    setEmailState("submitting");
-    try {
-      const res = await fetch(
-        "https://connect.mailerlite.com/api/subscribers",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${MAILERLITE_API_KEY}`,
-          },
-          body: JSON.stringify({ email, groups: [MAILERLITE_GROUP_ID] }),
-        },
-      );
-
-      if (!res.ok) throw new Error("subscribe failed");
-      setEmailState("success");
-    } catch {
-      setEmailState("error");
-    }
-  };
-
   const closeEmail = () => {
     setEmailOpen(false);
-    setEmailState("idle");
-    setEmail("");
+    resetForm();
   };
+
+  const hasErrors =
+    !!formState.errors &&
+    (Array.isArray(formState.errors)
+      ? formState.errors.length > 0
+      : Object.keys(formState.errors).length > 0);
 
   return (
     <>
@@ -116,7 +80,7 @@ const HeroCtas = () => {
                 </svg>
               </button>
 
-              {emailState === "success" ? (
+              {formState.succeeded ? (
                 <div className="email-modal-body">
                   <div className="email-success-icon">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -145,22 +109,21 @@ const HeroCtas = () => {
                     <input
                       ref={inputRef}
                       type="email"
+                      name="email"
                       required
                       placeholder="you@example.com"
                       className="email-input"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      disabled={emailState === "submitting"}
+                      disabled={formState.submitting}
                     />
                     <button
                       type="submit"
                       className="email-submit"
-                      disabled={emailState === "submitting"}
+                      disabled={formState.submitting}
                     >
-                      {emailState === "submitting" ? "..." : "Notify me"}
+                      {formState.submitting ? "..." : "Notify me"}
                     </button>
                   </div>
-                  {emailState === "error" && (
+                  {hasErrors && (
                     <p className="email-error">
                       Something went wrong. Please try again.
                     </p>
