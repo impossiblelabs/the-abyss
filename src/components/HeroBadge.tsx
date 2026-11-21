@@ -1,5 +1,22 @@
+import type { ReactNode } from "react";
+import { KICKSTARTER_URL } from "../config";
+
+const BadgeWrapper = ({ children }: { children: ReactNode }) =>
+  KICKSTARTER_URL ? (
+    <a
+      className="hero-badge"
+      href={KICKSTARTER_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {children}
+    </a>
+  ) : (
+    <div className="hero-badge">{children}</div>
+  );
+
 const HeroBadge = () => (
-  <div className="hero-badge">
+  <BadgeWrapper>
     <svg width="18" height="16" viewBox="0 0 18 16" fill="none">
       <path
         d="M11.3 0.5L7.2 5.8L7.2 0.7H4.5V15.3H7.2V10.1L11.4 15.5H14.8L9.7 8.9L14.6 0.5H11.3Z"
@@ -23,7 +40,7 @@ const HeroBadge = () => (
         opacity="0.4"
       />
     </svg>
-  </div>
+  </BadgeWrapper>
 );
 
 export default HeroBadge;

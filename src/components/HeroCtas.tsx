@@ -1,6 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useForm } from "@formspree/react";
+import { KICKSTARTER_URL } from "../config";
+
+// Signup channel from ?utm_source=... (e.g. reddit, bgg). Only called in the
+// client-only modal, but guarded so it is safe during SSR/prerender too.
+const getSignupSource = () => {
+  if (typeof window === "undefined") return "direct";
+  const source = new URLSearchParams(window.location.search)
+    .get("utm_source")
+    ?.trim()
+    .toLowerCase()
+    .slice(0, 64);
+  return source || "direct";
+};
 
 // The game is playable for free in the browser on Board Game Arena (public alpha).
 const PLAY_URL = "https://boardgamearena.com/gamepanel?game=theabyss";
@@ -40,6 +53,16 @@ const HeroCtas = () => {
         <button className="cta-primary" onClick={() => setEmailOpen(true)}>
           Get notified
         </button>
+        {KICKSTARTER_URL && (
+          <a
+            className="cta-secondary"
+            href={KICKSTARTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Follow on Kickstarter
+          </a>
+        )}
         <a
           className="cta-demo"
           href={PLAY_URL}
@@ -89,16 +112,21 @@ const HeroCtas = () => {
                   </div>
                   <h3 className="email-modal-title">You're on the list</h3>
                   <p className="email-modal-sub">
-                    We'll notify you when pre-orders open.
+                    We'll email you on launch day.
                   </p>
                 </div>
               ) : (
                 <form className="email-modal-body" onSubmit={handleSubmit}>
-                  <h3 className="email-modal-title">Get notified</h3>
+                  <h3 className="email-modal-title">Get notified at launch</h3>
                   <p className="email-modal-sub">
-                    Enter your email and we'll let you know when The Abyss is
-                    available for pre-order.
+                    Enter your email and we'll let you know the day The Abyss
+                    launches on Kickstarter.
                   </p>
+                  <input
+                    type="hidden"
+                    name="source"
+                    value={getSignupSource()}
+                  />
                   <div className="email-input-row">
                     <input
                       ref={inputRef}
