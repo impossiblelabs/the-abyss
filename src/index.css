@@ -329,6 +329,7 @@ a {
   cursor: pointer;
   background: none;
   border: none;
+  text-decoration: none;
 }
 .cta-demo-circle {
   width: 44px;
