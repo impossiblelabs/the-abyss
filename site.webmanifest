@@ -1,6 +1,8 @@
 {
-  "name": "the abyss",
-  "short_name": "the abyss",
+  "name": "The Abyss",
+  "short_name": "The Abyss",
+  "description": "A fast deep-sea strategy card game for 2–4 players.",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +15,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#1E1E1E",
-  "background_color": "#1E1E1E",
+  "theme_color": "#050200",
+  "background_color": "#050200",
   "display": "standalone"
 }
