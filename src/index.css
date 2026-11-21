@@ -89,6 +89,7 @@ a {
   border-radius: 16px;
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
 }
@@ -255,6 +256,7 @@ a {
   position: relative;
 }
 .hero-subheading {
+  display: block;
   font-family: "Stylish", serif;
   font-size: 2rem;
   font-weight: 400;
@@ -264,6 +266,7 @@ a {
   margin-bottom: 0;
 }
 .hero-heading {
+  display: block;
   font-family: "Stylish", serif;
   color: #f5e6c8;
   font-size: 3.5rem;

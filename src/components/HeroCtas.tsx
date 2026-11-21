@@ -38,7 +38,7 @@ const HeroCtas = () => {
     <>
       <div className="hero-ctas">
         <button className="cta-primary" onClick={() => setEmailOpen(true)}>
-          Pre-order now
+          Get notified
         </button>
         <a
           className="cta-demo"

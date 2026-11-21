@@ -32,7 +32,7 @@ export default function FusionLanding() {
 
   return (
     <div className="fusion-root">
-      <audio ref={audioRef} src="/audio/deep-sea.wav" loop preload="auto" />
+      <audio ref={audioRef} src="/audio/deep-sea.m4a" loop preload="none" />
       <ParticleBg />
 
       {/* HERO */}
@@ -63,8 +63,10 @@ export default function FusionLanding() {
           <HeroBadge />
 
           <div style={{ position: "relative" }}>
-            <h2 className="hero-subheading">Dive into</h2>
-            <h1 className="hero-heading">The Abyss</h1>
+            <h1>
+              <span className="hero-subheading">Dive into</span>{" "}
+              <span className="hero-heading">The Abyss</span>
+            </h1>
           </div>
 
           <p className="hero-sub">
