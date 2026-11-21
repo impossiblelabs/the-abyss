@@ -255,6 +255,13 @@ a {
   margin-bottom: 24px;
   position: relative;
 }
+a.hero-badge {
+  text-decoration: none;
+  transition: background 0.3s;
+}
+a.hero-badge:hover {
+  background: rgba(5, 206, 120, 0.14);
+}
 .hero-subheading {
   display: block;
   font-family: "Stylish", serif;
@@ -324,6 +331,23 @@ a {
   box-shadow:
     0 6px 32px rgba(224, 160, 40, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.cta-secondary {
+  padding: 15px 28px;
+  border-radius: 999px;
+  font-size: 18px;
+  font-family: "Stylish", serif;
+  color: #05ce78;
+  text-decoration: none;
+  background: rgba(5, 206, 120, 0.08);
+  border: 1px solid rgba(5, 206, 120, 0.3);
+  display: inline-block;
+  transition: all 0.3s;
+}
+.cta-secondary:hover {
+  transform: scale(1.03);
+  background: rgba(5, 206, 120, 0.14);
+  box-shadow: 0 0 20px rgba(5, 206, 120, 0.15);
 }
 .cta-demo {
   display: flex;
@@ -661,6 +685,29 @@ a {
   box-shadow:
     0 6px 32px rgba(224, 160, 40, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ── Print & Play link (sits above the rulebook FAB) ── */
+.fab-pnp {
+  position: fixed;
+  bottom: 88px;
+  right: 24px;
+  z-index: 30;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: "Stylish", serif;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: rgba(224, 160, 40, 0.75);
+  text-decoration: none;
+  background: rgba(10, 8, 6, 0.6);
+  border: 1px solid rgba(224, 160, 40, 0.25);
+  transition: all 0.3s;
+}
+.fab-pnp:hover {
+  color: #e0a028;
+  background: rgba(224, 160, 40, 0.1);
+  box-shadow: 0 0 20px rgba(224, 160, 40, 0.15);
 }
 
 /* ── Footer ── */
