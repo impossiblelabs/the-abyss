@@ -5,64 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>The Abyss - a dark ocean of monsters, treasures and danger comes to life in your hand.</title>
-    <meta name="title" content="The Abyss - a dark ocean of monsters, treasures and danger comes to life in your hand." />
+    <title>The Abyss – Deep-Sea Strategy Card Game for 2–4 Players</title>
     <meta
       name="description"
-      content="Dive into The Abyss — a game of action and strategy that takes you to the depths of the ocean. Learn the rules in minutes, play for hours."
+      content="Dive into The Abyss, a fast deep-sea strategy card game for 2–4 players full of monsters, treasures and danger. Learn in minutes, play free on Board Game Arena."
     />
     <meta name="author" content="Impossible Labs" />
-    <meta
-      name="keywords"
-      content="the abyss, board game, card game, strategy game, action game, ocean game, tabletop game"
-    />
-    <link rel="canonical" href="https://diveintheabyss.com" />
+    <link rel="canonical" href="https://diveintheabyss.com/" />
 
     <!-- Theme & Icons -->
     <meta name="theme-color" content="#050200" />
-    <meta name="msapplication-TileColor" content="#050200" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://diveintheabyss.com" />
-    <meta
-      property="og:title"
-      content="The Abyss - a dark ocean of monsters, treasures and danger comes to life in your hand."
-    />
-    <meta
-      property="og:description"
-      content="Dive into The Abyss - a game of action and strategy that takes you to the depths of the ocean. Learn the rules in minutes, play for hours."
-    />
-    <meta
-      property="og:image"
-      content="https://diveintheabyss.com/og-image.png"
-    />
+    <meta property="og:url" content="https://diveintheabyss.com/" />
+    <meta property="og:title" content="The Abyss – Deep-Sea Strategy Card Game for 2–4 Players" />
+    <meta property="og:description" content="Dive into The Abyss, a fast deep-sea strategy card game for 2–4 players full of monsters, treasures and danger. Learn in minutes, play free on Board Game Arena." />
+    <meta property="og:image" content="https://diveintheabyss.com/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="The Abyss — a dark ocean of monsters, treasures and danger comes to life in your hand."
-    />
+    <meta property="og:image:alt" content="The Abyss card game: a dark ocean of monsters, treasures and danger" />
     <meta property="og:site_name" content="The Abyss" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://diveintheabyss.com" />
-    <meta
-      name="twitter:title"
-      content="The Abyss — a dark ocean of monsters, treasures and danger comes to life in your hand."
-    />
-    <meta
-      name="twitter:description"
-      content="Dive into The Abyss — a game of action and strategy that takes you to the depths of the ocean. Learn the rules in minutes, play for hours."
-    />
-    <meta
-      name="twitter:image"
-      content="https://diveintheabyss.com/og-image.png"
-    />
+    <meta name="twitter:title" content="The Abyss – Deep-Sea Strategy Card Game for 2–4 Players" />
+    <meta name="twitter:description" content="Dive into The Abyss, a fast deep-sea strategy card game for 2–4 players full of monsters, treasures and danger. Learn in minutes, play free on Board Game Arena." />
+    <meta name="twitter:image" content="https://diveintheabyss.com/og-image.jpg" />
+    <meta name="twitter:image:alt" content="The Abyss card game: a dark ocean of monsters, treasures and danger" />
     <meta name="twitter:creator" content="@OxMarco" />
 
     <!-- Google Fonts -->
@@ -74,22 +51,44 @@
     />
   </head>
   <body>
-    <noscript>
-      <h1>The Abyss</h1>
-      <p>
-        A game of action and strategy that takes you to the depths of the ocean.
-        Learn the rules in minutes, play for hours.
-      </p>
-    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "The Abyss",
-        "url": "https://diveintheabyss.com",
-        "description": "A dark ocean of monsters, treasures and danger comes to life in your hand."
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://diveintheabyss.com/#org",
+            "name": "Impossible Labs",
+            "url": "https://impossiblelabs.xyz"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://diveintheabyss.com/#website",
+            "name": "The Abyss",
+            "alternateName": "Dive into The Abyss",
+            "url": "https://diveintheabyss.com/",
+            "publisher": { "@id": "https://diveintheabyss.com/#org" }
+          },
+          {
+            "@type": "Game",
+            "@id": "https://diveintheabyss.com/#game",
+            "name": "The Abyss",
+            "alternateName": "Dive into The Abyss",
+            "description": "A fast deep-sea strategy card game for 2–4 players full of monsters, treasures and danger. Learn the rules in minutes, play for hours.",
+            "url": "https://diveintheabyss.com/",
+            "image": "https://diveintheabyss.com/og-image.jpg",
+            "genre": ["Card game", "Strategy game", "Tabletop game"],
+            "numberOfPlayers": {
+              "@type": "QuantitativeValue",
+              "minValue": 2,
+              "maxValue": 4
+            },
+            "publisher": { "@id": "https://diveintheabyss.com/#org" },
+            "sameAs": ["https://boardgamearena.com/gamepanel?game=theabyss"]
+          }
+        ]
       }
     </script>
   </body>

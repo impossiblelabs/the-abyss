@@ -2,16 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      // Redirect all 404s to index.html for SPA routing on GitHub Pages
-      var path =
-        window.location.pathname +
-        window.location.search +
-        window.location.hash;
-      window.location.replace("/" + "?p=" + encodeURIComponent(path));
-    </script>
-    <meta http-equiv="refresh" content="0;url=/" />
-    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Page not found – The Abyss</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Stylish&display=swap" rel="stylesheet" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 24px 16px;
+        background: #050200;
+        color: #f0d8a8;
+        font-family: "DM Sans", sans-serif;
+        text-align: center;
+      }
+      h1 { font-family: "Stylish", serif; font-weight: 400; font-size: 3rem; color: #f5e6c8; }
+      p { opacity: 0.8; }
+      a { color: #e0a028; font-weight: 500; }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <h1>Lost in the deep</h1>
+    <p>This page sank without a trace.</p>
+    <a href="/">Back to The Abyss</a>
+  </body>
 </html>

@@ -38,9 +38,16 @@ const VerticalMarquee = ({
         {images.map((n, i) => (
           <img
             key={i}
-            src={`/images/card${n}.png`}
-            alt=""
-            loading="eager"
+            src={`/images/card${n}.webp`}
+            // Only the first copy of each card gets alt text; the repeats are
+            // decorative duplicates for the seamless loop.
+            alt={i < ALL_CARDS.length ? `The Abyss game card ${n}` : ""}
+            aria-hidden={i < ALL_CARDS.length ? undefined : true}
+            // Only the first few cards are visible on load; lazy-load the rest.
+            loading={i < 3 ? "eager" : "lazy"}
+            decoding="async"
+            width={825}
+            height={1125}
             className="marquee-card"
           />
         ))}
